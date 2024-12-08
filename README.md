@@ -8,6 +8,8 @@
 | email             |  string   |null: false, unique: true |
 |encrypted_password |  string   | null: false|
 | name_kanji        |  string   | null: false|
+| family_name  |  string   | null:false |
+| given_name   |  string   | null:false |
 | name_hiragana     |  string   | null: false|
 | name_katakana     |  string   | null: false|
 | date_of_birth     |  date  　 | null:false |
@@ -24,10 +26,10 @@
 |  product_descriptions        | text      | null: false|
 | category_information_id         |  integer   | null: false|
 |product_condition_information_id |  integer   | null: false|
-|shipping_cost_information    |  integer   | null: false|
+|shipping_cost_information_id   |  integer   | null: false|
 |shipping_origin_information_id   |  integer   | null: false|
 |shipping_time_id                 |  integer   | null: false|
-|pricing_information_id           |  integer   | null: false|
+|pricing_information           |  integer   | null: false|
 
 ### Association
 - belongs_to: user
