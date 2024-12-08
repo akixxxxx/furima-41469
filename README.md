@@ -6,7 +6,6 @@
 |----------         |---------  |-----------|
 |nick_name          |  string   |null:false |
 | email             |  string   |null: false, unique: true |
-|password           |  string   | null:false |
 |encrypted_password |  string   | null: false|
 | name_kanji        |  string   | null: false|
 | name_hiragana     |  string   | null: false|
@@ -21,19 +20,18 @@
 
 |column                        | type      |  options   |
 |---------------------         | ------------|-----------|
-| product_images               |  string   | null: false|
-|product_names                 | text      | null: false|
+|product_names                 | string     | null: false|
 |  product_descriptions        | text      | null: false|
 | category_information         |  string   | null: false|
 |product_condition_information |  string   | null: false|
-|shipping_cost_information     |  string   | null: false|
-|shipping_origin_information   |  string   | null: false|
-|shipping_time                 |  string   | null: false|
-|pricing_information           |  string   | null: false|
+|shipping_cost_information_id     |  integer   | null: false|
+|shipping_origin_information_id   |  integer   | null: false|
+|shipping_time_id                 |  integer   | null: false|
+|pricing_information_id           |  integer   | null: false|
 
 ### Association
 - belongs_to: users
-- has_one :  purchase_records
+- has_one :  purchase_record
 
 ## purchase_recordsテーブル
 
@@ -44,20 +42,22 @@
 
 ### Association
 
-- belongs_to : users
-- belongs_to : items
-- has_one    : shipping_informations
+- belongs_to : user
+- belongs_to : item
+- has_one    : shipping_information
 
 ## shipping_informationsテーブル
 
 |column                        | type      |  options   |
 ｜ーーーーーーーーーーーーーーーーー |-----------|------------|
 |postal_code                   |string     |null:false  |
-|prefecture                    |string     |null:false  |
+|prefecture                    | references    |null:false foreign_key: true |
 |city                          |string     |null:false  |
 |address                       |string     |null:false  |
+|building_name                 |string     |            |
+|user                          |references | null: false ,foreign_key: true|
 |phone_number                  |string     |null:false  |
 
 ### Association
-- belongs_to : purchase_records
+- belongs_to : purchase_record
 
