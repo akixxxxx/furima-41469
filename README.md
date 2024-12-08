@@ -7,7 +7,6 @@
 |nick_name          |  string   |null:false |
 | email             |  string   |null: false, unique: true |
 |encrypted_password |  string   | null: false|
-| name_kanji        |  string   | null: false|
 | family_name  |  string   | null:false |
 | given_name   |  string   | null:false |
 | name_hiragana     |  string   | null: false|
