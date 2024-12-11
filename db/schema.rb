@@ -22,9 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_09_100843) do
     t.string "nick_name", default: "", null: false
     t.string "family_name", default: "", null: false
     t.string "given_name", default: "", null: false
-    t.string "name_hiragana", default: "", null: false
     t.string "name_katakana", default: "", null: false
-    t.string "date_of_birth", default: "", null: false
+    t.date "date_of_birth", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
