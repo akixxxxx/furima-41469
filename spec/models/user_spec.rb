@@ -34,13 +34,13 @@ RSpec.describe User, type: :model do
       @user.password = 'abcdef'
       @user.password_confirmation = 'abcdef'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password は6文字以上で英数字をそれぞれ含める必要があります')
+      expect(@user.errors.full_messages).to include('Password は英数字をそれぞれ含める必要があります')
     end
     it 'passwordが英語だけでは登録できない' do
       @user.password = '1234567'
       @user.password_confirmation = '1234567'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password は6文字以上で英数字をそれぞれ含める必要があります')
+      expect(@user.errors.full_messages).to include('Password は英数字をそれぞれ含める必要があります')
     end
     it '重複したemailが存在する場合は登録できない' do
       @user.save
