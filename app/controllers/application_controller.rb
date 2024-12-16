@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
-  before_action :authenticate_user!, except: [:index]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
@@ -14,7 +13,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # sign_up時に許可するパラメータを指定
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: [:nick_name, :family_name, :given_name, :name_katakana,
-                                             :date_of_birth])
+                                      keys: [:nick_name, :family_name, :given_name, :name_katakana, :family_name_yomi,
+                                             :given_name_yomi, :date_of_birth])
   end
 end

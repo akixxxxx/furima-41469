@@ -6,7 +6,8 @@ FactoryBot.define do
     password_confirmation { password }
     family_name           { '山田' }
     given_name            { '県' }
-    name_katakana         { generate_katakana }
+    family_name_yomi      { generate_katakana }
+    given_name_yomi       { generate_katakana }
     date_of_birth         { Faker::Date.birthday(min_age: 18, max_age: 65) }
   end
 end

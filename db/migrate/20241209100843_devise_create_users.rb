@@ -9,7 +9,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :nick_name,          null: false, default: ""
       t.string :family_name,        null: false, default: ""
       t.string :given_name,         null: false, default: ""
-      t.string :name_katakana,      null: false, default: ""
+      t.string :family_name_yomi,      null: false, default: ""
+      t.string :given_name_yomi,      null: false, default: ""
       t.date :date_of_birth,      null: false
 
       ## Recoverable
