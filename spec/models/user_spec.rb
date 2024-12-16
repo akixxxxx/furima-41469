@@ -69,17 +69,45 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
-      it '名前が空では登録できない' do
+      it '名前(名字)が空では登録できない' do
         @user.family_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name can't be blank")
+      end
+      it '名前(名字)が半角文字が含まれている場合は登録できない' do
+        @user.family_name = 'Yamada'
+        @user.valid?
         expect(@user.errors.full_messages).to include('Family name 全角文字を使用してください')
       end
-      it '名前(カタカナ)が空では登録できない' do
+      it '名前(名前)が空では登録できない' do
         @user.given_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Given name can't be blank")
+      end
+      it '名前(名前)が半角文字が含まれている場合は登録できない' do
+        @user.given_name = 'ken'
+        @user.valid?
         expect(@user.errors.full_messages).to include('Given name 全角文字を使用してください')
+      end
+      it '読み仮名(名字)が空では登録できない' do
+        @user.family_name_yomi = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name yomi can't be blank")
+      end
+      it '読み仮名(名字)が半角文字が含まれている場合は登録できない' do
+        @user.family_name_yomi = 'Yamada'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Family name yomi is invalid')
+      end
+      it '読み仮名(名前)が空では登録できない' do
+        @user.given_name_yomi = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Given name yomi can't be blank")
+      end
+      it '読み仮名(名前)が半角文字が含まれている場合は登録できない' do
+        @user.given_name_yomi = 'ken'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Given name yomi is invalid')
       end
       it 'passwordが全角文字を含むと登録できない' do
         @user.password = 'ｐａｓｓｗｏｒｄ123'
