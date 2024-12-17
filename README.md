@@ -9,8 +9,8 @@
 |encrypted_password |  string   | null: false|
 | family_name  |  string   | null:false |
 | given_name   |  string   | null:false |
-| name_hiragana     |  string   | null: false|
-| name_katakana     |  string   | null: false|
+| family_name_yomi     |  string   | null: false|
+| given_name_yomi   |  string   | null:false |
 | date_of_birth     |  date  　 | null:false |
 
 ### Association
