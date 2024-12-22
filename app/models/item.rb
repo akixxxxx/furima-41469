@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  validates :image, presence: true
+  validates :product_name, presence: true
+  validates :product_description, presence: true
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category_information, class_name: 'CategoryInformation'
