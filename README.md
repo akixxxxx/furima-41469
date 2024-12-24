@@ -17,7 +17,7 @@
 - has_many : items
 - has_many : purchase_records
 
-## itemsテーブル
+## productsテーブル
 
 |column                        | type      |  options   |
 |---------------------         | ------------|-----------|
@@ -32,7 +32,7 @@
 
 ### Association
 - belongs_to: user
-- has_one :  purchase_record
+- has_one : purchase_record
 
 ## purchase_recordsテーブル
 
