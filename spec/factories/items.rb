@@ -8,7 +8,7 @@ FactoryBot.define do
     shipping_cost_information_id { 2 }
     shipping_origin_information_id { 2 }
     shipping_time_id { 2 }
-    pricing_information { Faker::Commerce.price(range: 300..9_999_999).to_i }
+    pricing_information { Faker::Number.between(from: 300, to: 9_999_999) }
     association :user
   end
 end

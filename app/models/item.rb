@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_time, class_name: 'ShippingTime'
 
   validates :pricing_information,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+            numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                             message: 'must be between ¥300 and ¥9,999,999' }
 
   # ジャンルの選択が「---」の時は保存できないようにする
