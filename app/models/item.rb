@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
+  belongs_to :user
   validates :image, presence: true
-  validates :product_name, presence: true
-  validates :product_description, presence: true
+  validates :product_name, presence: true, length: { maximum: 40 }
+  validates :product_description, presence: true, length: { maximum: 1000 }
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category_information, class_name: 'CategoryInformation'
@@ -15,9 +16,9 @@ class Item < ApplicationRecord
                             message: 'must be between ¥300 and ¥9,999,999' }
 
   # ジャンルの選択が「---」の時は保存できないようにする
-  validates :category_information_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :product_condition_information_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_cost_information_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_origin_information_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_time_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_information_id, numericality: { other_than: 1, message: "can't be blank!" }
+  validates :product_condition_information_id, numericality: { other_than: 1, message: "can't be blank!!" }
+  validates :shipping_cost_information_id, numericality: { other_than: 1, message: "can't be blank!!!" }
+  validates :shipping_origin_information_id, numericality: { other_than: 1, message: "can't be blank!!!!" }
+  validates :shipping_time_id, numericality: { other_than: 1, message: "can't be blank!!!!!" }
 end
