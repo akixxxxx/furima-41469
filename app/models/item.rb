@@ -21,9 +21,9 @@ class Item < ApplicationRecord
   validates :shipping_cost_information_id, numericality: { other_than: 1, message: "can't be blank!!!" }
   validates :shipping_origin_information_id, numericality: { other_than: 1, message: "can't be blank!!!!" }
   validates :shipping_time_id, numericality: { other_than: 1, message: "can't be blank!!!!!" }
-  has_one :purchase_record
+  # has_one :purchase_record
 
-  def sold_out?
-    purchase_record.present?
-  end
+  # def sold_out?
+  #  purchase_record.present?
+  # end
 end

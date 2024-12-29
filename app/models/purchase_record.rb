@@ -1,3 +1,3 @@
 class PurchaseRecord < ApplicationRecord
-  belongs_to :items
+  # belongs_to :items
 end
