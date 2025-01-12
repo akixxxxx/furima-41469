@@ -20,7 +20,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-       ¥ <%= @item.pricing_information%>
+       ¥ <%= @item.pricing_information %>
       </span>
       <span class="item-postage">
         <%= @item.shipping_cost_information.name %>
@@ -40,7 +40,7 @@
    <%# if !@item.sold_out? %>
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to "購入画面に進む", "#", data: { turbo: false }, class:"item-red-btn"%>
+    <%= link_to "購入画面に進む", item_orders_path(@item) , data: { turbo: false }, class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
      <%# else %>
 
