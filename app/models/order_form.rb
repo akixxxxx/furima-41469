@@ -13,8 +13,6 @@ class OrderForm
   validates :address, presence: true
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
 
-  belongs_to :purchase_record
-
   def save
     if valid?
       ActiveRecord::Base.transaction do
