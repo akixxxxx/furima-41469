@@ -1,7 +1,7 @@
 class OrderForm
   include ActiveModel::Model
   attr_accessor :item, :user, :postal_code, :shipping_origin_information_id, :city, :address, :building_name, :phone_number,
-                :token
+                :token, :purchase_record_id
 
   # ここにバリデーションの処理を書く
   validates :item, presence: true
