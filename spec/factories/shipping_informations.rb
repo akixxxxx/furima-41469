@@ -7,5 +7,6 @@ FactoryBot.define do
     building_name { Faker::Address.secondary_address }
     phone_number {  Faker::Number.number(digits: [10, 11].sample) }
     association :purchase_record
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end

@@ -1,6 +1,7 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :item, :user, :postal_code, :shipping_origin_information_id, :city, :address, :building_name, :phone_number
+  attr_accessor :item, :user, :postal_code, :shipping_origin_information_id, :city, :address, :building_name, :phone_number,
+                :token
 
   # ここにバリデーションの処理を書く
   validates :item, presence: true
@@ -12,6 +13,7 @@ class OrderForm
   validates :city, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
+  validates :token, presence: true
 
   def save
     if valid?

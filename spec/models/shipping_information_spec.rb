@@ -10,6 +10,9 @@ RSpec.describe ShippingInformation, type: :model do
       it 'すべて入力されていれば登録できる' do
         expect(@shipping_information).to be_valid
       end
+      it 'カード情報と購入者情報が登録できていれば登録できる' do
+        expect(@shipping_information).to be_valid
+      end
     end
 
     context '購入登録できないとき' do
