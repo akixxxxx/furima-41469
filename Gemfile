@@ -79,7 +79,7 @@ group :development do
 end
 
 group :production do
-  # gem 'pg'
+  gem 'pg'
 end
 
 gem 'devise'
@@ -89,4 +89,3 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'gon'
 gem 'payjp'
-gem 'gon'

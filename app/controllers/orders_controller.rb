@@ -10,8 +10,6 @@ class OrdersController < ApplicationController
   def create
     @order_form = OrderForm.new(order_params)
     Rails.logger.debug "Order params: #{order_params.inspect}"
-
-    @order_form = OrderForm.new(order_params)
     if @order_form.valid?
       pay_item
       @order_form.save
@@ -29,7 +27,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_form).permit(:postal_code, :shipping_origin_information_id, :city, :address, :building_name, :phone_number).merge(
-      user: current_user, item: @item, token: params[:token]
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
 

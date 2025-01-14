@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def redirect_sold_out_item
-    return unless @item.sold_out? && @item.user == current_user
+    return unless @item.sold_out?
 
     redirect_to root_path
   end
