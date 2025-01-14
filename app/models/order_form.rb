@@ -23,7 +23,6 @@ class OrderForm
       ActiveRecord::Base.transaction do
         # 購入情報の保存
         purchase_record = PurchaseRecord.create!(item_id: item_id, user_id: user_id)
-        Rails.logger.debug "Creating ShippingInformation with: postal_code=#{postal_code}, shipping_origin_information_id=#{shipping_origin_information_id}, city=#{city}, address=#{address}, building_name=#{building_name}, phone_number=#{phone_number}"
         # 発送先情報の保存
         ShippingInformation.create!(
           postal_code: postal_code,

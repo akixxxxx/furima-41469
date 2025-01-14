@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
 
   def create
     @order_form = OrderForm.new(order_params)
-    Rails.logger.debug "Order params: #{order_params.inspect}"
     if @order_form.valid?
       pay_item
       @order_form.save
