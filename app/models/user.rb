@@ -34,4 +34,7 @@ class User < ApplicationRecord
 
   # errors.add(:pricing_information, 'は半角数字のみを含む場合でなければなりません')
   # end
+
+  has_many :items
+  has_many :purchase_records
 end
