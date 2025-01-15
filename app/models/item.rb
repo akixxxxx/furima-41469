@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  belongs_to :user
   validates :image, presence: true
   validates :product_name, presence: true, length: { maximum: 40 }
   validates :product_description, presence: true, length: { maximum: 1000 }
@@ -21,9 +20,9 @@ class Item < ApplicationRecord
   validates :shipping_cost_information_id, numericality: { other_than: 1, message: "can't be blank!!!" }
   validates :shipping_origin_information_id, numericality: { other_than: 1, message: "can't be blank!!!!" }
   validates :shipping_time_id, numericality: { other_than: 1, message: "can't be blank!!!!!" }
-  # has_one :purchase_record
-
-  # def sold_out?
-  #  purchase_record.present?
-  # end
+  has_one :purchase_record
+  belongs_to :user
+  def sold_out?
+    purchase_record.present?
+  end
 end

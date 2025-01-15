@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_29_070850) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_11_031811) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_29_070850) do
   end
 
   create_table "items", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "product_name", null: false
     t.text "product_description", null: false
     t.integer "category_information_id", null: false
@@ -50,21 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_29_070850) do
     t.integer "pricing_information", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "products", charset: "utf8", force: :cascade do |t|
-    t.string "product_name", null: false
-    t.text "product_description", null: false
-    t.integer "category_information_id", null: false
-    t.integer "product_condition_information_id", null: false
-    t.integer "shipping_cost_information_id", null: false
-    t.integer "shipping_origin_information_id", null: false
-    t.integer "shipping_time_id", null: false
-    t.integer "pricing_information", null: false
+  create_table "orders", charset: "utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "users_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_orders_on_order_id"
+    t.index ["users_id"], name: "index_orders_on_users_id"
   end
 
   create_table "purchase_records", charset: "utf8", force: :cascade do |t|
@@ -74,6 +70,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_29_070850) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_purchase_records_on_item_id"
     t.index ["user_id"], name: "index_purchase_records_on_user_id"
+  end
+
+  create_table "shipping_informations", charset: "utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.integer "shipping_origin_information_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number", null: false
+    t.bigint "purchase_record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_record_id"], name: "index_shipping_informations_on_purchase_record_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -97,6 +106,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_29_070850) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "orders"
+  add_foreign_key "orders", "users", column: "users_id"
   add_foreign_key "purchase_records", "items"
   add_foreign_key "purchase_records", "users"
+  add_foreign_key "shipping_informations", "purchase_records"
 end
