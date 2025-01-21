@@ -2,7 +2,7 @@ class OrderForm
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :postal_code, :shipping_origin_information_id, :city, :address, :building_name, :phone_number,
                 :token, :purchase_record_id
-  
+
   # ここにバリデーションの処理を書く
   with_options presence: true do
     validates :item_id
@@ -16,9 +16,8 @@ class OrderForm
     validates :phone_number, format: { with: VALID_PHONE_NUMBER_REGEX }
     validates :token
   end
-    validates :shipping_origin_information_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_origin_information_id, numericality: { other_than: 1, message: "can't be blank" }
   def save
-
     if valid?
       ActiveRecord::Base.transaction do
         # 購入情報の保存
